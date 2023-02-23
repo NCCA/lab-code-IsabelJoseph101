@@ -24,10 +24,10 @@ TEST(Image, defaultRGBA)
         for(int x = 0; x < 5; ++x)
         {
             auto pixel = img.getPixel(x, y);
-            ASSERT_EQ(pixel.r,0);
-            ASSERT_EQ(pixel.g,0);
-            ASSERT_EQ(pixel.b,0);
-            ASSERT_EQ(pixel.a,0);
+            ASSERT_EQ(pixel.r, 0);
+            ASSERT_EQ(pixel.g, 0);
+            ASSERT_EQ(pixel.b, 0);
+            ASSERT_EQ(pixel.a, 0);
         }
     }
 }
@@ -38,5 +38,11 @@ TEST(Image, set_get)
     auto img = Image(1, 0);
     ASSERT_EQ(img.width(),1);
     ASSERT_EQ(img.height(),0);
+    img.setPixel(0, 0, 255, 128, 12, 0);
+    auto pixel = img.getPixel(0, 0);
+    ASSERT_EQ(pixel.r, 255);
+    ASSERT_EQ(pixel.g, 128);
+    ASSERT_EQ(pixel.b, 12);
+    ASSERT_EQ(pixel.a, 0);
 }
 
