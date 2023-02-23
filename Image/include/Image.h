@@ -2,6 +2,7 @@
 #define IMAGE_H_
 #include "RGBA.h"
 #include <memory>
+#include <string_view>
 
 // classes are capitalized
 class Image
@@ -16,7 +17,7 @@ class Image
     int height() const;
     RGBA getPixel(int _x, int _y) const;
     void setPixel(int _x, int _y, unsigned char _r, unsigned char _g, unsigned char _b, unsigned char _a = 255);
-
+    bool save(std::string_view _fname) const;
     private:
     // m_ means that anything that is a member of the class
     int m_width = 0;

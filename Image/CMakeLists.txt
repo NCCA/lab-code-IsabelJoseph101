@@ -10,6 +10,7 @@ project(Image_build)
 
 # Here we set the C++ standard to use
 set(CMAKE_CXX_STANDARD 17)
+find_package(OpenImageIO CONFIG REQUIRED)
 include_directories(include)
 
 # Now we add our target executable and the file it is built from.
@@ -17,7 +18,7 @@ add_executable(Image)
 # We now add the source files we want for the project. for now we are going to just add main.cpp
 # See here for more details https://crascit.com/2016/01/31/enhanced-source-file-handling-with-target_sources/
 target_sources(Image PRIVATE src/main.cpp src/Image.cpp)
-
+target_link_libraries(Image PRIVATE OpenImageIO::OpenImageIO)
 # testing code
 find_package(GTest CONFIG REQUIRED)
 add_executable(ImageTests)
@@ -25,4 +26,5 @@ target_sources(ImageTests PRIVATE test/ImageTests.cpp
                                     test/RGBATests.cpp
                                     include/RGBA.h
                                     src/Image.cpp)
-target_link_libraries(ImageTests PRIVATE GTest::gtest GTest::gtest_main)    
+target_link_libraries(ImageTests PRIVATE GTest::gtest GTest::gtest_main
+                                                      OpenImageIO::OpenImageIO)    
