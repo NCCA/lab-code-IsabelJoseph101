@@ -32,3 +32,11 @@ TEST(Image, defaultRGBA)
     }
 }
 
+
+TEST(Image, set_get)
+{
+    auto img = Image(1, 0);
+    ASSERT_EQ(img.width(),1);
+    ASSERT_EQ(img.height(),0);
+}
+
